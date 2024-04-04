@@ -25,10 +25,6 @@ class LoginController extends Controller
         if ($credentials) {
             $user = Admin::where('username', $request->username)->where('password', $request->password)->first();
             if ($user) {
-                // Session::put('login_id', $user->id, true);
-                $request->session()->put('login_id', $user->id);
-                // session()->put('login_name', $user->username);
-                // session()->put('login_role', $user->role);
                 return redirect()->intended('/index');
             } else {
                 Session::put('alert_status', 2);
