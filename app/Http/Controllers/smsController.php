@@ -3,6 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Models\Sms;
 
 class smsController extends Controller
 {
@@ -27,7 +29,26 @@ class smsController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'provider' => 'required|string|max:100',
+            'smskey' => 'required|string|max:100',
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
+
+        $sms = Sms::get();
+
+        $sms = Sms::create([
+            'ag_id' => 1,
+            'sms_provider' => $request->input('provider'),
+            'sms_password' => password_hash($request->input('smskey'), PASSWORD_DEFAULT),
+            'sms_endpoint' => "https://portal.sms2pro.com/sms-api/message-sms/send",
+            'sms_sender_name' => "SMSOTP"
+        ]);
+
+        return response()->json($sms, 201);
     }
 
     /**
