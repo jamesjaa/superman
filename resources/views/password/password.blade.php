@@ -25,21 +25,20 @@
                                 <form>
                                     <label class="form-label mt-3">Old Password</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="o_password"><i class="bi bi-person-fill-lock"></i></span>
-                                        <input type="password" class="form-control" id="o_password" placeholder="Enter Old Password">
+                                        <span class="input-group-text"><i class="bi bi-person-fill-lock"></i></span>
+                                        <input type="password" class="form-control" id="o_password" placeholder="Enter Old Password" required>
                                     </div>
                                     <label class="form-label mt-3">New Password</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="n_password"><i class="bi bi-person-fill-lock"></i></span>
-                                        <input type="password" class="form-control" id="n_password" placeholder="Enter New Password">
+                                        <span class="input-group-text"><i class="bi bi-person-fill-lock"></i></span>
+                                        <input type="password" class="form-control" id="n_password" placeholder="Enter New Password" required>
                                     </div>
                                     <label class="form-label mt-3">Confirm Password</label>
                                     <div class="input-group mb-3">
-                                        <span class="input-group-text" id="c_password"><i class="bi bi-person-fill-lock"></i></span>
-                                        <input type="password" class="form-control" id="c_password" placeholder="Confirm New Password">
+                                        <span class="input-group-text"><i class="bi bi-person-fill-lock"></i></span>
+                                        <input type="password" class="form-control" id="c_password" placeholder="Confirm New Password" required>
                                     </div>
                                     <div class="col-sm-12 text-center">
-                                        <input type="text" value="{{session('login_id')}}">
                                         <button type="button" class="btn btn-primary" id="btnSubmit"><i class="bi bi-floppy me-2"></i>Save</button>
                                     </div>
                                 </form>
@@ -66,21 +65,34 @@
         </div>
     </section>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script>
     $(document).ready(function() {
         $("#btnSubmit").click(function(e) {
-            // console.log('1');
             e.preventDefault();
             $.ajax({
                 type: "PUT",
-                url: "/api/password/",
+                url: "/api/password/2",
                 data: {
                     o_password: $("#o_password").val(),
                     n_password: $("#n_password").val(),
                     c_password: $("#c_password").val(),
                 },
                 success: function(result) {
-                    console.log(result);
+                    // Display response message using SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: result.message
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // console.error('AJAX request failed:', textStatus, errorThrown);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'User update failed'
+                    });
                 }
             });
         });
