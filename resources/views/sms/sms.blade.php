@@ -22,17 +22,19 @@
                         <div class="card">
                             <h5 class="card-header">SMS OTP Configuration</h5>
                             <div class="card-body">
-                                <label class="form-label mt-3">SMS Provider</label>
-                                <select class="form-select mb-3" aria-label="Default select example">
-                                    <option value="sms2pro" selected>SMS2Pro</option>
-                                </select>
-                                <div class="mb-3 mt-3">
-                                    <label for="smskey" class="form-label">SMS API Key</label>
-                                    <input type="email" class="form-control" id="smskey" placeholder="Enter API Key">
-                                </div>
-                                <div class="col-sm-12 text-center">
-                                    <button type="button" class="btn btn-primary"><i class="bi bi-floppy me-2"></i>Save</button>
-                                </div>
+                                <form>
+                                    <label class="form-label mt-3">SMS Provider</label>
+                                    <select class="form-select mb-3" aria-label="Default select example" id="provider">
+                                        <option value="sms2pro" selected>SMS2Pro</option>
+                                    </select>
+                                    <div class="mb-3 mt-3">
+                                        <label for="smskey" class="form-label">SMS API Key</label>
+                                        <input type="text" class="form-control" id="smskey" placeholder="Enter API Key">
+                                    </div>
+                                    <div class="col-sm-12 text-center">
+                                        <button type="button" class="btn btn-primary" id="btnSubmit"><i class="bi bi-floppy me-2"></i>Save</button>
+                                    </div>
+                                </form>
                             </div>
                         </div>
                     </div><!-- End Top Selling -->
@@ -62,4 +64,38 @@
         </div>
     </section>
 </div>
+<script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script>
+    $(document).ready(function() {
+        $("#btnSubmit").click(function(e) {
+            e.preventDefault();
+            $.ajax({
+                type: "POST",
+                url: "/api/sms",
+                data: {
+                    provider: $("#provider").val(),
+                    smskey: $("#smskey").val(),
+                },
+                success: function(result) {
+                    // Display response message using SweetAlert
+                    Swal.fire({
+                        icon: 'success',
+                        title: 'Success!',
+                        text: result.message
+                    }).then(function() {
+                        window.location.reload();
+                    });
+                },
+                error: function(jqXHR, textStatus, errorThrown) {
+                    // console.error('AJAX request failed:', textStatus, errorThrown);
+                    Swal.fire({
+                        icon: 'error',
+                        title: 'Oops...',
+                        text: 'failed'
+                    });
+                }
+            });
+        });
+    });
+</script>
 @endsection
