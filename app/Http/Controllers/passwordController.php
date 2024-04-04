@@ -53,29 +53,28 @@ class passwordController extends Controller
      */
     public function update(Request $request)
     {
-        echo $id = Session::get('login_id');
-        // $validator = Validator::make($request->all(), [
-        //     // กำหนด rules การ validate ข้อมูลที่ต้องการอัปเดต
-        //     'o_password' => 'required|string|max:100',
-        //     'n_password' => 'required|string|max:100',
-        //     'c_password' => 'required|string|max:100',
-        // ]);
+        // echo "1";
 
-        // if ($validator->fails()) {
-        //     return response()->json($validator->errors(), 400);
-        // }
+        $validator = Validator::make($request->all(), [
+            'o_password' => 'required|string|max:100',
+            'n_password' => 'required|string|max:100',
+            'c_password' => 'required|string|max:100',
+        ]);
 
-        // $user = Admin::find($id);
-        // if (!$user) {
-        //     return response()->json(['message' => 'User not found'], 404);
-        // }
+        if ($validator->fails()) {
+            return response()->json($validator->errors(), 400);
+        }
 
-        // // อัปเดตข้อมูลผู้ใช้
-        // $user->f_name = $request->input('f_name');
-        // // อัปเดต fields อื่นๆ ตามที่ต้องการ
-        // $user->save();
+        $user = Admin::find(2);
 
-        // return response()->json(['message' => 'User updated successfully'], 200);
+        if (!$user) {
+            return response()->json(['message' => 'User not found'], 404);
+        }
+
+        $user->password = $request->input('c_password');
+        $user->save();
+
+        return response()->json(['message' => 'User updated successfully'], 200);
     }
 
     /**
