@@ -21,9 +21,9 @@
                     <div class="col-12">
                         <div class="card top-selling overflow-auto">
 
-                            <div class="card-body pb-0">
+                            <div class="card-body pb-0 m-2">
 
-                                <table class="table table-borderless" id="myTable2">
+                                <table class="table table-borderless" id="myTable">
                                     <thead class="text-center">
                                         <tr>
                                             <th scope="col">No.</th>
