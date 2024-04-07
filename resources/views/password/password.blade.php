@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <!-- Top Selling -->
-                    <div class="col-4">
+                    <div class="col-lg-4">
                         <div class="card">
                             <h5 class="card-header">Password update</h5>
                             <div class="card-body">
@@ -46,7 +46,7 @@
                         </div>
                     </div><!-- End Top Selling -->
                     <!-- Top Selling -->
-                    <div class="col-8">
+                    <div class="col-lg-8">
                         <div class="card">
                             <h5 class="card-header">Description</h5>
                             <div class="card-body">
