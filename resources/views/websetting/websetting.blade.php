@@ -18,7 +18,7 @@
             <div class="col-lg-12">
                 <div class="row">
                     <!-- Top Selling -->
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <div class="card">
                             <h5 class="card-header">Website Configuration</h5>
                             <div class="card-body">
@@ -33,7 +33,7 @@
                         </div>
                     </div><!-- End Top Selling -->
                     <!-- Top Selling -->
-                    <div class="col-6">
+                    <div class="col-lg-6">
                         <div class="card">
                             <h5 class="card-header">Redirect Configuration</h5>
                             <div class="card-body">
