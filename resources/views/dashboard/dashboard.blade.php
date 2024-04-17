@@ -53,7 +53,7 @@
                                         <i class="bi bi-person-fill-add"></i>
                                     </div>
                                     <div class="ps-3">
-                                        <h6>$3,264</h6>
+                                        <h6>{{$countNewUser}}</h6>
 
                                     </div>
                                 </div>
@@ -71,7 +71,7 @@
                                 <h5 class="card-title">EXPORT TO EXCEL</h5>
 
                                 <div class="d-flex align-items-center">
-                                    <button type="button" class="btn btn-success btn-lg my-2"><i class="bi bi-file-earmark-arrow-down me-2"></i>DOWNLOAD</button>
+                                    <button type="button" class="btn btn-success btn-lg my-2" id="downloadButton"><i class="bi bi-file-earmark-arrow-down me-2"></i>DOWNLOAD</button>
                                 </div>
 
                             </div>
@@ -85,4 +85,9 @@
         </div>
     </section>
 </div>
+<script>
+    document.getElementById('downloadButton').addEventListener('click', function() {
+        window.location.href = "{{ route('download.csv') }}";
+    });
+</script>
 @endsection

@@ -59,9 +59,8 @@ return array(
                         'database'  => 'cgvkpmuznh',
                         'username'  => 'cgvkpmuznh',
                         'password'  => 'nwNK2ZwBXS',
-                        'charset'   => 'utf8',
-                        'collation' => 'utf8_unicode_ci',
-                        'prefix'    => '',
+                        'charset' => 'latin1',
+                        'collation' => 'latin1_swedish_ci',
                 ),
 
                 'pgsql' => array(

@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::resource('dashboard', dashboardController::class)->except(['create', 'edit']);
+// Route::resource('dashboard', dashboardController::class)->except(['create', 'edit']);
 Route::resource('users', UserController::class)->except(['create', 'edit']);
 Route::resource('password', passwordController::class)->except(['create', 'edit']);
 Route::resource('websetting', websettingController::class)->except(['create', 'edit']);

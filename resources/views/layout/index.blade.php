@@ -3,7 +3,8 @@
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <!-- Vendor CSS Files -->
     <link href="{{ asset('assets/vendor/bootstrap/css/bootstrap.min.css') }}" rel="stylesheet">
     <link href="{{ asset('assets/vendor/bootstrap-icons/bootstrap-icons.css') }}" rel="stylesheet">
@@ -48,7 +49,7 @@
     <header id="header" class="header fixed-top d-flex align-items-center">
 
         <div class="d-flex align-items-center justify-content-between">
-            <a href="/api/dashboard" class="logo d-flex align-items-center">
+            <a href="/dashboard" class="logo d-flex align-items-center">
                 <!-- <img src="assets/img/logo.png" alt=""> -->
                 <span class="d-none d-lg-block">DATA CENTER</span>
             </a>
@@ -62,13 +63,13 @@
                     <a class="nav-link nav-profile d-flex align-items-center pe-0" href="#" data-bs-toggle="dropdown">
                         <!-- <img src="assets/img/profile-img.jpg" alt="Profile" class="rounded-circle"> -->
                         <i class="bi bi-person-circle" style="font-size: 2rem"></i>
-                        <span class="d-none d-md-block dropdown-toggle ps-2"></span>
+                        <span class="d-none d-md-block dropdown-toggle ps-2">{{Session::get('login_username')}}</span>
                     </a><!-- End Profile Iamge Icon -->
 
                     <ul class="dropdown-menu dropdown-menu-end dropdown-menu-arrow profile">
                         <li class="dropdown-header">
-                            <h6>Username : </h6>
-                            <span>Role : </span>
+                            <h6>Username : {{Session::get('login_username')}}</h6>
+                            <span>Role : {{Session::get('login_role')}}</span>
                         </li>
                         <li>
                             <hr class="dropdown-divider">
@@ -94,7 +95,7 @@
         <ul class="sidebar-nav" id="sidebar-nav">
 
             <li class="nav-item">
-                <a class="nav-link " href="/api/dashboard">
+                <a class="nav-link " href="/dashboard">
                     <i class="bi bi-grid" style="font-size: 2em;"></i>
                     <span>ภาพรวม</span>
                 </a>
@@ -103,28 +104,28 @@
             <li class="nav-heading">Pages</li>
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/api/users">
+                <a class="nav-link collapsed" href="/users">
                     <i class="bi bi-people-fill" style="font-size: 2em;"></i>
                     <span>รายชื่อทั้งหมด</span>
                 </a>
             </li><!-- End Profile Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/api/password">
+                <a class="nav-link collapsed" href="/password">
                     <i class="bi bi-person-fill-gear" style="font-size: 2em;"></i>
                     <span>ตั้งค่ารหัสผ่าน</span>
                 </a>
             </li><!-- End F.A.Q Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/api/websetting">
+                <a class="nav-link collapsed" href="/websetting">
                     <i class="bi bi-card-list" style="font-size: 2em;"></i>
                     <span>ตั้งค่าเว็บไซต์</span>
                 </a>
             </li><!-- End Contact Page Nav -->
 
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/api/sms">
+                <a class="nav-link collapsed" href="/sms">
                     <i class="bi bi-envelope" style="font-size: 2em;"></i>
                     <span>ตั้งค่า SMS OTP</span>
                 </a>
