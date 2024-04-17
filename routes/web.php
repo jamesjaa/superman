@@ -19,6 +19,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
+// Route::get('/', function () {
+//     return view('welcome');
+// });
+
 Route::get('/', [LoginController::class, 'fromlogin']);
 Route::post('login', [LoginController::class, 'login']);
 Route::get('logout', [LoginController::class, 'logout']);
