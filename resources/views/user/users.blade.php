@@ -27,9 +27,7 @@
                                     <thead class="text-center">
                                         <tr>
                                             <th scope="col">No.</th>
-                                            <th scope="col">Title</th>
-                                            <th scope="col">First Name</th>
-                                            <th scope="col">Last Name</th>
+                                            <th scope="col">Fullname</th>
                                             <th scope="col">Bank</th>
                                             <th scope="col">Bank Number</th>
                                             <th scope="col">Birthday</th>
@@ -43,9 +41,7 @@
                                         <?php $i++; ?>
                                         <tr>
                                             <td class="text-center">{{$i}}</td>
-                                            <td class="text-center">{{$u->title}}</td>
-                                            <td class="text-center">{{$u->fname}}</td>
-                                            <td class="text-center">{{$u->lname}}</td>
+                                            <td>{{$u->title}} {{$u->fname}} {{$u->lname}}</td>
                                             <td class="text-center">{{$u->bank}}</td>
                                             <td class="text-center">{{$u->bank_number}}</td>
                                             <td class="text-center">{{$u->birthday}}</td>

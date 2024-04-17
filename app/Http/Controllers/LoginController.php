@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Admin;
+use Illuminate\Support\Carbon;
 use Illuminate\Support\Facades\Session;
 
 class LoginController extends Controller
@@ -46,6 +47,8 @@ class LoginController extends Controller
     public function index()
     {
         $all_users = User::all()->count();
-        return view('dashboard.dashboard', ['all_users' => $all_users]);
+        $maxDatetime =  Carbon::parse(User::max('created_at'))->format('Y-m-d');
+        $countNewUser = User::whereDate('created_at', $maxDatetime)->count('created_at');
+        return view('dashboard.dashboard', ['all_users' => $all_users, 'countNewUser' => $countNewUser]);
     }
 }
