@@ -59,20 +59,25 @@ class passwordController extends Controller
             'o_password' => 'required|string|max:100',
             'n_password' => 'required|string|max:100',
             'c_password' => 'required|string|max:100',
+            'user_id' => 'required|int',
         ]);
 
         if ($validator->fails()) {
             return response()->json($validator->errors(), 400);
         }
 
-        $user = Admin::find(2);
+        $user = Admin::find($request->input('user_id'));
 
         if (!$user) {
             return response()->json(['message' => 'User not found'], 404);
         }
 
-        $user->password = $request->input('c_password');
-        $user->save();
+        if ($request->input('n_password') == $request->input('c_password')) {
+            $user->password = $request->input('c_password');
+            $user->save();
+        } else {
+            return response()->json(['message' => 'User not found'], 404);
+        }
 
         return response()->json(['message' => 'User updated successfully'], 200);
     }

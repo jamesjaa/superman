@@ -39,6 +39,7 @@
                                         <input type="password" class="form-control" id="c_password" placeholder="Confirm New Password" required>
                                     </div>
                                     <div class="col-sm-12 text-center">
+                                        <input type="hidden" value="{{Session::get('login_id')}}" id="user_id">
                                         <button type="button" class="btn btn-primary" id="btnSubmit"><i class="bi bi-floppy me-2"></i>Save</button>
                                     </div>
                                 </form>
@@ -72,11 +73,12 @@
             e.preventDefault();
             $.ajax({
                 type: "PUT",
-                url: "/api/password/2",
+                url: "/api/password/" + $("#user_id").val(),
                 data: {
                     o_password: $("#o_password").val(),
                     n_password: $("#n_password").val(),
                     c_password: $("#c_password").val(),
+                    user_id: $("#user_id").val(),
                 },
                 success: function(result) {
                     // Display response message using SweetAlert
